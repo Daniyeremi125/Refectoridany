@@ -1,39 +1,25 @@
-<?php  
+<?php
+use App\HtmlElement;
 
-    require '../vendor/autoload.php';  
+require '../vendor/autoload.php';
 
-    use App\HtmlElement;  
 
-    $element = new \App\HtmlElement('p',[],'este es el contemido');  
+// simple párrafo
+$element = new HtmlElement('p',[], 'Contenido');
+echo $element->open().'Chicharrones'.$element->close();
 
-    echo htmlentities( $element->render(), ENT_QUOTES, 'UTF-8');
+echo $element->render();
 
-    echo '<br><br>';
 
-    $element = new \App\HtmlElement('p',['id'=>'my_paragraph'],'este es el contemido');  
 
-    echo htmlentities( $element->render(), ENT_QUOTES, 'UTF-8');
+//elementos de HTML
+$element = new HtmlElement('p',['id'=>'párrafo'], 'Contenido');
+echo $element->render();
 
-    echo '<br><br>';
+// sin etiqueta para cerrar como img
+$element = new HtmlElement('img',['src'=>'../public/img/gato.jpg','height'=>200],);
+echo $element->render();
 
-    $element = new \App\HtmlElement('p',['id'=>'my_paragraph', 'class' => 'paragraph'],'este es el contemido');  
-
-    echo htmlentities( $element->render(), ENT_QUOTES, 'UTF-8');
-
-    echo '<br><br>';
-
-    $element = new \App\HtmlElement('img',['src'=>'img/styde.png']);  
-
-    echo htmlentities( $element->render(), ENT_QUOTES, 'UTF-8');
-    
-    echo '<br><br>';
-
-    $element = new \App\HtmlElement('img',['src'=>'img/styde.png','title'=>'Curso de "refactorizacion" en styde']);  
-
-    echo htmlentities( $element->render(), ENT_QUOTES, 'UTF-8');
-
-    echo '<br><br>';
-
-    $element = new \App\HtmlElement('input',['required']);  
-
-    echo htmlentities( $element->render(), ENT_QUOTES, 'UTF-8');
+// etiquetas de entrada
+$element = new HtmlElement('input',['required'],);
+echo $element->render();
